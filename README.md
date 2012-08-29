@@ -51,57 +51,57 @@ There is currently no official method of upgrading.
 
 The Following Code is an example of how the module could be used:
 
-  use Ext::Omegle;
-  my $obot = Ext::Omegle->new(
-                             on_connect    => \&connect_cb,
-                             on_chat       => \&chat_cb,
-			     on_recaptcha  => \&recaptcha_cb,
-			     on_recaptcharejected  => \&recaptchareject_cb,
-                             on_disconnect => \&disconnect_cb,
-		             on_typing => \&typing_cb,
-			     on_stoptyping => \&stoptyping_cb,
-                             );
+	use Ext::Omegle;
+	my $obot = Ext::Omegle->new(
+				on_connect    => \&connect_cb,
+				on_chat       => \&chat_cb,
+				on_recaptcha  => \&recaptcha_cb,
+				on_recaptcharejected  => \&recaptchareject_cb,
+				on_disconnect => \&disconnect_cb,
+				on_typing => \&typing_cb,
+				on_stoptyping => \&stoptyping_cb,
+	);
 
-  $obot->start;
-  while ($obot->get_next_event) { 1; }
-  exit;
+	$obot->start;
+	while ($obot->get_next_event) { 1; }
+	exit;
 
-  sub connect_cb {
-    my ($om) = @_;
-    print "[OMEGLE] Connected\n";
-    $om->say('Hello!');
-  }
+	sub connect_cb {
+		my ($om) = @_;
+		print "[OMEGLE] Connected\n";
+		$om->say('Hello!');
+	}
 
-  sub chat_cb {
-    my ($om, $what) = @_;
-    print "[OMEGLE] $what\n";
-  }
+	sub chat_cb {
+		my ($om, $what) = @_;
+		print "[OMEGLE] $what\n";
+  	}
 
-  sub recaptcha_cb {
-    my ($om, $what) = @_;
-    print "[OMEGLE] Captcha Recieved (Challenge: $what)\n";
-  }
+	sub recaptcha_cb {
+		my ($om, $what) = @_;
+		print "[OMEGLE] Captcha Recieved (Challenge: $what)\n";
+	}
 
-  sub recaptchareject_cb {
-    my ($om) = @_;
-    print "[OMEGLE] Catpcha Rejected, Disconnecting.\n";
-    $om->disconnect;
-  }
+	sub recaptchareject_cb {
+		my ($om) = @_;
+		print "[OMEGLE] Catpcha Rejected, Disconnecting.\n";
+		$om->disconnect;
+	}
 
-  sub disconnect_cb {
-    my ($om) = @_;
-    print "[OMEGLE] Disconnected.\n";
-  }
+	sub disconnect_cb {
+		my ($om) = @_;
+		print "[OMEGLE] Disconnected.\n";
+	}
 
-  sub typing_cb {
-    my ($om, $what) = @_;
-    print "[OMEGLE] Stranger is typing...\n";
-  }
+	sub typing_cb {
+		my ($om, $what) = @_;
+		print "[OMEGLE] Stranger is typing...\n";
+	}
 
-  sub stoptyping_cb {
-    my ($om, $what) = @_;
-    print "[OMEGLE] Stranger has stopped typing.\n";
-  }
+	sub stoptyping_cb {
+		my ($om, $what) = @_;
+		print "[OMEGLE] Stranger has stopped typing.\n";
+	}
 
 ## 7. HELP, BUGS, SUGGESTIONS
 
