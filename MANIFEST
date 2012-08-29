@@ -1,0 +1,7 @@
+Changes
+Makefile.PL
+MANIFEST
+README
+t/Ext-Omegle.t
+lib/Ext/Omegle.pm
+META.yml                                 Module meta-data (added by MakeMaker)

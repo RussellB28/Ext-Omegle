@@ -1,0 +1,7 @@
+Revision history for Perl extension Ext::Omegle.
+
+0.01 Wed Aug  29
+	- Added Callback Event Handler reCaptchaRequired
+	- Added Callback Event Handler reCaptchaRejected
+	- Added Callback Event Handler stoppedTyping
+
