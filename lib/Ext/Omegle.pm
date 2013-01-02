@@ -139,13 +139,11 @@ sub handle_event {
             delete $self->{om_id};
         } elsif ($evt_name eq 'count') {
             $self->callback('count');
-            delete $self->{om_id};
         } elsif ($evt_name eq 'error') {
             $self->callback('error');
             delete $self->{om_id};
         } elsif ($evt_name eq 'question') {
             $self->callback('question');
-            delete $self->{om_id};
         } elsif ($evt_name eq 'waiting') {
             
         } else {
