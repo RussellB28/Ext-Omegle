@@ -25,6 +25,9 @@ sub new {
     my $recaptchareject_cb = delete $opts{on_recaptcharejected};
     my $typing_cb = delete $opts{on_typing};
     my $stoppedtyping_cb = delete $opts{on_stoppedtyping};
+    my $error_cb = delete $opts{on_error};
+    my $count_cb = delete $opts{on_count};
+    my $question_cb = delete $opts{on_question};
 
     my $self = $class->SUPER::new(%opts);
 
@@ -36,6 +39,9 @@ sub new {
 	recaptcharejected => $recaptchareject_cb,
 	typing => $typing_cb,
 	stoppedtyping => $stoppedtyping_cb,
+	error => $error_cb,
+	count => $count_cb,
+	question => $question_cb,
     };
 
     my $async = new HTTP::Async();
@@ -130,6 +136,15 @@ sub handle_event {
             $self->callback('stoppedtyping');
         } elsif ($evt_name eq 'strangerDisconnected') {
             $self->callback('disconnect');
+            delete $self->{om_id};
+        } elsif ($evt_name eq 'count') {
+            $self->callback('count');
+            delete $self->{om_id};
+        } elsif ($evt_name eq 'error') {
+            $self->callback('error');
+            delete $self->{om_id};
+        } elsif ($evt_name eq 'question') {
+            $self->callback('question');
             delete $self->{om_id};
         } elsif ($evt_name eq 'waiting') {
             
